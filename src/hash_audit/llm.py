@@ -1,4 +1,4 @@
-
+﻿
 import json
 import urllib.request
 
@@ -17,7 +17,7 @@ def ask_ollama(
         "keep_alive": "10m",
         "options": {
             "temperature": 0,
-            "num_predict": 180,
+            "num_predict": 256,
             "num_ctx": 2048,
         },
     }
@@ -40,3 +40,4 @@ def ask_ollama(
         ) from exc
 
     return result.get("response", "").strip()
+

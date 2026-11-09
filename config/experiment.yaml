@@ -1,0 +1,7 @@
+seed: 20261109
+repetitions: 3
+models:
+  baseline: deterministic
+  small: null
+  medium: null
+notes: "LLM runs not yet implemented; fill actual model tags and digests"

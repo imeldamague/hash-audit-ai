@@ -1,4 +1,4 @@
-# Hash-Audit AI — Sujet 2
+# Hash-Audit AI - Sujet 2
 
 Projet pédagogique de cryptographie appliquée et IA agentique. **État : prototype initial v0.1.0, NON conforme à toutes les exigences du sujet.**
 

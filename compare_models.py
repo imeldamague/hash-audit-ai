@@ -3,56 +3,83 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from hash_audit.llm import ask_ollama
+from hash_audit.llm import ask_ollama_detailed
 
 MODELS = ["llama3.2:3b", "qwen3:4b"]
+
 PROMPT = (
     "Une application stocke les mots de passe avec MD5. "
     "Explique le risque principal et recommande Argon2id. "
     "Reponds en francais en deux phrases."
 )
 
-RESULTS_FILE = Path("results/model_comparison.csv")
+RESULTS_FILE = Path("results/model_benchmark.csv")
 RESULTS_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-with RESULTS_FILE.open("a", newline="", encoding="utf-8-sig") as file:
-    writer = csv.writer(file, delimiter=";")
+FIELDS = [
+    "date",
+    "model",
+    "duration_seconds",
+    "eval_count",
+    "done_reason",
+    "status",
+    "prompt",
+    "final_response",
+    "raw_response",
+]
 
-    if file.tell() == 0:
-        writer.writerow([
-            "date",
-            "model",
-            "duration_seconds",
-            "status",
-            "prompt",
-            "response",
-        ])
+def run_benchmark():
+    file_exists = RESULTS_FILE.exists() and RESULTS_FILE.stat().st_size > 0
 
-    for model in MODELS:
-        print(f"\n===== {model} =====", flush=True)
-        start = time.perf_counter()
+    with RESULTS_FILE.open("a", newline="", encoding="utf-8-sig") as file:
+        writer = csv.DictWriter(file, fieldnames=FIELDS, delimiter=";")
 
-        try:
-            response = ask_ollama(PROMPT, model=model)
-            status = "success"
-        except Exception as exc:
-            response = f"{type(exc).__name__}: {exc}"
-            status = "error"
+        if not file_exists:
+            writer.writeheader()
 
-        duration = round(time.perf_counter() - start, 2)
+        for model in MODELS:
+            print(f"\n===== {model} =====", flush=True)
+            start = time.perf_counter()
 
-        writer.writerow([
-            datetime.now().isoformat(timespec="seconds"),
-            model,
-            duration,
-            status,
-            PROMPT,
-            response,
-        ])
-        file.flush()
+            row = {
+                "date": datetime.now().isoformat(timespec="seconds"),
+                "model": model,
+                "duration_seconds": "",
+                "eval_count": "",
+                "done_reason": "",
+                "status": "error",
+                "prompt": PROMPT,
+                "final_response": "",
+                "raw_response": "",
+            }
 
-        print("Statut :", status)
-        print("Duree :", duration, "secondes")
-        print("Reponse :", response)
+            try:
+                result = ask_ollama_detailed(PROMPT, model=model)
+                row.update({
+                    "eval_count": result["eval_count"],
+                    "done_reason": result["done_reason"],
+                    "status": result["status"],
+                    "final_response": result["final_response"],
+                    "raw_response": result["raw_response"],
+                })
+            except Exception as exc:
+                row["raw_response"] = f"{type(exc).__name__}: {exc}"
 
-print("\nResultats enregistres dans :", RESULTS_FILE)
+            row["duration_seconds"] = round(
+                time.perf_counter() - start, 2
+            )
+
+            writer.writerow(row)
+            file.flush()
+
+            print("Statut :", row["status"])
+            print("Duree :", row["duration_seconds"], "secondes")
+            print("Tokens :", row["eval_count"])
+            print("Fin :", row["done_reason"])
+            print("Reponse finale :", row["final_response"])
+
+    print("\nResultats enregistres dans :", RESULTS_FILE)
+
+
+if __name__ == "__main__":
+    run_benchmark()

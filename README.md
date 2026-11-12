@@ -1,47 +1,26 @@
 # Hash-Audit AI
 
-Projet de cybers?curit? et d'IA agentique pour l'audit des m?canismes de stockage des mots de passe.
+**Système d'intelligence artificielle multi-agents pour l'audit de sécurité des mécanismes de hachage et de stockage des mots de passe.**
 
-## Fonctionnalit?s
+## Présentation
 
-- Jeu de donn?es synth?tique de 1 000 comptes.
-- Analyse MD5, SHA-256 sal? et Argon2id.
-- Six agents sp?cialis?s et un orchestrateur.
-- Audit de 25 fichiers Python synth?tiques.
-- Attaque par dictionnaire.
-- Comparaison Argon2id, scrypt, bcrypt et PBKDF2-SHA256.
+Hash-Audit AI est un projet de cybersécurité et d'IA agentique conçu pour analyser les pratiques de stockage des mots de passe, détecter des mécanismes de hachage faibles et proposer des recommandations de sécurisation.
+
+## Fonctionnalités
+
+- Jeu de données synthétique de 1 000 comptes.
+- Analyse de MD5, SHA-256 salé et Argon2id.
+- Architecture composée de six agents spécialisés et d'un orchestrateur.
+- Audit de 25 fichiers Python synthétiques.
+- Simulation d'attaque par dictionnaire.
+- Comparaison d'Argon2id, scrypt, bcrypt et PBKDF2-SHA256.
 - Gestion du pepper.
-- V?rification facultative Pwned Passwords avec k-anonymity.
-- Simulation statistique de migration sur 90 jours.
+- Vérification facultative des mots de passe compromis avec Pwned Passwords et le mécanisme k-anonymity.
+- Simulation statistique d'une migration sur 90 jours.
 
 ## Installation
 
-Python 3.11 ou sup?rieur.
+**Prérequis :** Python 3.11 ou version supérieure.
 
-```powershell
+```bash
 python -m pip install -e ".[dev]"
-```
-
-## Tests
-
-```powershell
-python -m pytest -q
-python -m pytest --cov=src/hash_audit --cov=app --cov-report=term-missing
-```
-
-Derni?re r?f?rence locale : 66 tests r?ussis et 87 % de couverture, le 12 novembre 2026.
-
-## Limites
-
-Les donn?es sont synth?tiques. Les r?sultats sur 25 fichiers ne garantissent pas une d?tection parfaite en production. Les benchmarks d?pendent du mat?riel. La migration est une simulation statistique. Une validation humaine reste n?cessaire.
-
-## Documentation
-
-- AUDIT.md
-- SYSTEM_CARD.md
-- AI_USAGE.md
-
-## Auteur
-
-Imelda Magu?
-https://github.com/imeldamague

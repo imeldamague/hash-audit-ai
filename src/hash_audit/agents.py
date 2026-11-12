@@ -32,7 +32,6 @@ class Identifier:
         patterns = {
             "md5": "hashlib.md5",
             "sha1": "hashlib.sha1",
-            "sha256_salted": "hashlib.sha256",
             "argon2id": "PasswordHasher",
         }
 
@@ -41,22 +40,44 @@ class Identifier:
                 state.findings.append({
                     "scheme": scheme,
                     "indicator": needle,
-                    "severity": (
-                        "high"
-                        if scheme in ("md5", "sha1", "sha256_salted")
-                        else "info"
-                    ),
+                    "severity": "high" if scheme in ("md5", "sha1") else "info",
+                })
+
+        if "hashlib.sha256" in source:
+            password_context = re.search(
+                r"\b(password|passwd|pwd)\b",
+                source,
+                re.IGNORECASE,
+            )
+            salt_context = re.search(
+                r"\b(salt|sel)\b",
+                source,
+                re.IGNORECASE,
+            )
+
+            if password_context:
+                scheme = "sha256_salted" if salt_context else "sha256_unsalted"
+                state.findings.append({
+                    "scheme": scheme,
+                    "indicator": "hashlib.sha256",
+                    "severity": "high",
+                })
+            else:
+                state.findings.append({
+                    "scheme": "sha256_usage_review",
+                    "indicator": "hashlib.sha256",
+                    "severity": "review",
                 })
 
         match = re.search(
-            r"""^\s*SCHEME\s*=\s*["'](md5|sha1|sha256_salted)["']""",
+            r"^\s*SCHEME\s*=\s*['\"](md5|sha1|sha256_salted)['\"]",
             source,
             re.MULTILINE,
         )
 
         if match and not any(
-            f["scheme"] == match.group(1)
-            for f in state.findings
+            finding.get("scheme") == match.group(1)
+            for finding in state.findings
         ):
             state.findings.append({
                 "scheme": match.group(1),

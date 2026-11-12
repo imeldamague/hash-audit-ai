@@ -47,3 +47,33 @@ def test_dictionary_attack_unknown_hash():
         assert False, "Une erreur était attendue."
     except ValueError:
         pass
+
+def test_dictionary_attack_argon2id_with_pepper():
+    password = "Demo-123456-!"
+    pepper = "Test-Pepper-2026"
+
+    stored = hash_password(password, "argon2id", pepper=pepper)
+
+    result = run_dictionary_attack(
+        stored,
+        ["incorrect", password],
+        pepper=pepper,
+    )
+
+    assert result["success"] is True
+    assert result["recovered_password"] == password
+    assert result["attempts"] == 2
+
+
+def test_dictionary_attack_argon2id_with_wrong_pepper():
+    password = "Demo-123456-!"
+    stored = hash_password(password, "argon2id", pepper="Pepper-A")
+
+    result = run_dictionary_attack(
+        stored,
+        [password],
+        pepper="Pepper-B",
+    )
+
+    assert result["success"] is False
+    assert result["recovered_password"] is None

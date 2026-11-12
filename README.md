@@ -1,42 +1,47 @@
-# Hash-Audit AI - Sujet 2
+# Hash-Audit AI
 
-Projet pédagogique de cryptographie appliquée et IA agentique. **État : prototype initial v0.1.0, NON conforme à toutes les exigences du sujet.**
+Projet de cybers?curit? et d'IA agentique pour l'audit des m?canismes de stockage des mots de passe.
 
-## Installation Windows 11 (PowerShell)
+## Fonctionnalit?s
+
+- Jeu de donn?es synth?tique de 1 000 comptes.
+- Analyse MD5, SHA-256 sal? et Argon2id.
+- Six agents sp?cialis?s et un orchestrateur.
+- Audit de 25 fichiers Python synth?tiques.
+- Attaque par dictionnaire.
+- Comparaison Argon2id, scrypt, bcrypt et PBKDF2-SHA256.
+- Gestion du pepper.
+- V?rification facultative Pwned Passwords avec k-anonymity.
+- Simulation statistique de migration sur 90 jours.
+
+## Installation
+
+Python 3.11 ou sup?rieur.
 
 ```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
 python -m pip install -e ".[dev]"
-python -m pytest -q
-python -m hash_audit.cli audit app/demo.py
 ```
 
-Si l'activation PowerShell est bloquée, utiliser directement `.\.venv\Scripts\python.exe` à la place de `python`.
-
-## Autres commandes
+## Tests
 
 ```powershell
-python -m hash_audit.cli dataset
-python -m hash_audit.cli mutations
-python -m hash_audit.cli migration
-python app/demo.py
+python -m pytest -q
+python -m pytest --cov=src/hash_audit --cov=app --cov-report=term-missing
 ```
 
-Les variantes MD5/SHA256 sont **volontairement vulnérables** et uniquement destinées à un laboratoire local. Ne jamais y saisir de vrais mots de passe.
+Derni?re r?f?rence locale : 66 tests r?ussis et 87 % de couverture, le 12 novembre 2026.
 
-## Architecture
+## Limites
 
-Six agents distincts sont présents dans `src/hash_audit/agents.py`, avec un état partagé typé et une trace JSONL. **Ils sont pour l'instant déterministes** ; l'intégration des deux modèles LLM locaux et la vraie boucle de correction/vérification restent à développer.
+Les donn?es sont synth?tiques. Les r?sultats sur 25 fichiers ne garantissent pas une d?tection parfaite en production. Les benchmarks d?pendent du mat?riel. La migration est une simulation statistique. Une validation humaine reste n?cessaire.
 
-## Écarts connus avec le cahier des charges
+## Documentation
 
-- Manquent : comparaison mesurée Argon2id/bcrypt/scrypt/PBKDF2, poivre hors base et rotation, attaque par dictionnaire chronométrée, politique NIST/ANSSI réelle, comparaison 3 configurations (sans LLM + deux LLM), robustesse aux erreurs et couverture >=70% vérifiée.
-- Les 25 mutations sont des fixtures initiales et ne constituent pas encore 25 applications complètes évaluées.
-- La migration 90 jours est une simulation de sessions et non une migration effective de 1000 empreintes.
-- Manquent : reproductibilité intégrale `make reproduce`, dépendances verrouillées, CI complète, figures, rapport 12–20 pages, GitHub Pages, signature, DOI et vidéo.
-- Ne pas présenter les métriques non mesurées comme des résultats expérimentaux.
+- AUDIT.md
+- SYSTEM_CARD.md
+- AI_USAGE.md
 
-## Publication
+## Auteur
 
-Créer un dépôt GitHub public `hash-audit-ai`, pousser progressivement le code, puis créer la release `v1.0.0` seulement après les tests et la vérification de tous les livrables. Ne jamais publier de secrets.
+Imelda Magu?
+https://github.com/imeldamague

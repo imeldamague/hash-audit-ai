@@ -3,10 +3,15 @@
 from .crypto import identify_format, verify_password
 
 
-def run_dictionary_attack(stored_hash: str, candidates: list[str]) -> dict:
+def run_dictionary_attack(
+    stored_hash: str,
+    candidates: list[str],
+    pepper: str | None = None,
+) -> dict:
     """
     Démonstration pédagogique sur une empreinte synthétique.
     Teste les candidats sans modifier l'empreinte originale.
+    Le pepper doit être fourni explicitement si nécessaire.
     """
     scheme = identify_format(stored_hash)
 
@@ -20,7 +25,7 @@ def run_dictionary_attack(stored_hash: str, candidates: list[str]) -> dict:
     for candidate in candidates:
         attempts += 1
 
-        if verify_password(stored_hash, candidate):
+        if verify_password(stored_hash, candidate, pepper=pepper):
             recovered = candidate
             break
 

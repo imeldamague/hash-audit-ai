@@ -1,4 +1,3 @@
-
 # Hash-Audit AI
 
 **Système d'intelligence artificielle multi-agents pour l'audit de sécurité des mécanismes de hachage et de stockage des mots de passe.**
@@ -17,7 +16,7 @@ Le projet combine des mécanismes d'audit de sécurité, des expérimentations c
 - Audit de 25 fichiers Python synthétiques présentant différents mécanismes ou défauts de hachage.
 - Simulation d'attaque par dictionnaire.
 - Comparaison d'Argon2id, scrypt, bcrypt et PBKDF2-SHA256.
-- Gestion du pepper (poivre cryptographique).
+- Gestion du pepper (secret cryptographique supplémentaire).
 - Vérification facultative des mots de passe compromis avec Pwned Passwords et le mécanisme k-anonymity.
 - Simulation statistique d'une migration sur 90 jours.
 - Génération de résultats et de traces d'audit.

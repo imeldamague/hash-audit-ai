@@ -11,3 +11,8 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+# Documentation générée et sauvegardes locales
+site/
+backup-docs-markdown/
+backup-docs-avant-nettoyage/

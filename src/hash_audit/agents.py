@@ -32,7 +32,6 @@ class Identifier:
         patterns = {
             "md5": "hashlib.md5",
             "sha1": "hashlib.sha1",
-            "sha256_salted": "hashlib.sha256",
             "argon2id": "PasswordHasher",
         }
 
@@ -41,22 +40,44 @@ class Identifier:
                 state.findings.append({
                     "scheme": scheme,
                     "indicator": needle,
-                    "severity": (
-                        "high"
-                        if scheme in ("md5", "sha1", "sha256_salted")
-                        else "info"
-                    ),
+                    "severity": "high" if scheme in ("md5", "sha1") else "info",
+                })
+
+        if "hashlib.sha256" in source:
+            password_context = re.search(
+                r"\b(password|passwd|pwd)\b",
+                source,
+                re.IGNORECASE,
+            )
+            salt_context = re.search(
+                r"\b(salt|sel)\b",
+                source,
+                re.IGNORECASE,
+            )
+
+            if password_context:
+                scheme = "sha256_salted" if salt_context else "sha256_unsalted"
+                state.findings.append({
+                    "scheme": scheme,
+                    "indicator": "hashlib.sha256",
+                    "severity": "high",
+                })
+            else:
+                state.findings.append({
+                    "scheme": "sha256_usage_review",
+                    "indicator": "hashlib.sha256",
+                    "severity": "review",
                 })
 
         match = re.search(
-            r"""^\s*SCHEME\s*=\s*["'](md5|sha1|sha256_salted)["']""",
+            r"^\s*SCHEME\s*=\s*['\"](md5|sha1|sha256_salted)['\"]",
             source,
             re.MULTILINE,
         )
 
         if match and not any(
-            f["scheme"] == match.group(1)
-            for f in state.findings
+            finding.get("scheme") == match.group(1)
+            for finding in state.findings
         ):
             state.findings.append({
                 "scheme": match.group(1),
@@ -88,7 +109,7 @@ class Identifier:
 class Evaluator:
     tools = ("attaque_dictionnaire", "bench_hash")
 
-    def run(self, state: AuditState):
+    def run(self, state: AuditState, use_llm: bool = True):
         risky = [
             f for f in state.findings
             if f.get("severity") == "high"
@@ -99,6 +120,18 @@ class Evaluator:
                 "agent": "evaluateur",
                 "assessment": "Aucun risque élevé détecté par les règles.",
                 "model": "none",
+            })
+            return
+
+        if not use_llm:
+            state.trace.append({
+                "agent": "evaluateur",
+                "assessment": (
+                    "Risque identifié par analyse statique. "
+                    "Les fonctions de hachage rapides facilitent "
+                    "les attaques hors ligne."
+                ),
+                "model": "disabled_batch",
             })
             return
 
@@ -145,7 +178,7 @@ class Evaluator:
 class Corrector:
     tools = ("proposer_patch",)
 
-    def run(self, state: AuditState):
+    def run(self, state: AuditState, use_llm: bool = True):
         risky = [
             f for f in state.findings
             if f.get("severity") == "high"
@@ -156,6 +189,19 @@ class Corrector:
                 "agent": "correcteur",
                 "recommendation": "Aucune correction proposée.",
                 "model": "none",
+            })
+            return
+
+        if not use_llm:
+            state.trace.append({
+                "agent": "correcteur",
+                "recommendation": (
+                    "Privilégier Argon2id avec un sel aléatoire unique. "
+                    "Prévoir une migration progressive après authentification "
+                    "réussie ou une réinitialisation du mot de passe."
+                ),
+                "model": "disabled_batch",
+                "patch_applied": False,
             })
             return
 
@@ -218,7 +264,11 @@ class PolicyAuditor:
 
 AGENTS=(Explorer(),Identifier(),Evaluator(),Corrector(),Tester(),PolicyAuditor())
 
-def audit(target:str)->AuditState:
-    state=AuditState(target=target)
-    for agent in AGENTS: agent.run(state)
+def audit(target: str, use_llm: bool = True) -> AuditState:
+    state = AuditState(target=target)
+    for agent in AGENTS:
+        if isinstance(agent, (Evaluator, Corrector)):
+            agent.run(state, use_llm=use_llm)
+        else:
+            agent.run(state)
     return state

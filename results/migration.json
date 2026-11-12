@@ -1,0 +1,366 @@
+[
+  {
+    "day": 0,
+    "migrated_percent": 33.3
+  },
+  {
+    "day": 1,
+    "migrated_percent": 35.8
+  },
+  {
+    "day": 2,
+    "migrated_percent": 38.5
+  },
+  {
+    "day": 3,
+    "migrated_percent": 40.7
+  },
+  {
+    "day": 4,
+    "migrated_percent": 42.9
+  },
+  {
+    "day": 5,
+    "migrated_percent": 45.2
+  },
+  {
+    "day": 6,
+    "migrated_percent": 47.2
+  },
+  {
+    "day": 7,
+    "migrated_percent": 49.3
+  },
+  {
+    "day": 8,
+    "migrated_percent": 51.2
+  },
+  {
+    "day": 9,
+    "migrated_percent": 53.3
+  },
+  {
+    "day": 10,
+    "migrated_percent": 54.5
+  },
+  {
+    "day": 11,
+    "migrated_percent": 56.3
+  },
+  {
+    "day": 12,
+    "migrated_percent": 57.6
+  },
+  {
+    "day": 13,
+    "migrated_percent": 58.6
+  },
+  {
+    "day": 14,
+    "migrated_percent": 59.8
+  },
+  {
+    "day": 15,
+    "migrated_percent": 61.2
+  },
+  {
+    "day": 16,
+    "migrated_percent": 62.9
+  },
+  {
+    "day": 17,
+    "migrated_percent": 64.5
+  },
+  {
+    "day": 18,
+    "migrated_percent": 65.8
+  },
+  {
+    "day": 19,
+    "migrated_percent": 67.2
+  },
+  {
+    "day": 20,
+    "migrated_percent": 68.2
+  },
+  {
+    "day": 21,
+    "migrated_percent": 69.2
+  },
+  {
+    "day": 22,
+    "migrated_percent": 70.4
+  },
+  {
+    "day": 23,
+    "migrated_percent": 71.4
+  },
+  {
+    "day": 24,
+    "migrated_percent": 71.9
+  },
+  {
+    "day": 25,
+    "migrated_percent": 72.5
+  },
+  {
+    "day": 26,
+    "migrated_percent": 73.3
+  },
+  {
+    "day": 27,
+    "migrated_percent": 74.1
+  },
+  {
+    "day": 28,
+    "migrated_percent": 75.1
+  },
+  {
+    "day": 29,
+    "migrated_percent": 76.0
+  },
+  {
+    "day": 30,
+    "migrated_percent": 76.8
+  },
+  {
+    "day": 31,
+    "migrated_percent": 77.7
+  },
+  {
+    "day": 32,
+    "migrated_percent": 78.3
+  },
+  {
+    "day": 33,
+    "migrated_percent": 78.9
+  },
+  {
+    "day": 34,
+    "migrated_percent": 79.9
+  },
+  {
+    "day": 35,
+    "migrated_percent": 80.7
+  },
+  {
+    "day": 36,
+    "migrated_percent": 81.7
+  },
+  {
+    "day": 37,
+    "migrated_percent": 82.3
+  },
+  {
+    "day": 38,
+    "migrated_percent": 82.9
+  },
+  {
+    "day": 39,
+    "migrated_percent": 82.9
+  },
+  {
+    "day": 40,
+    "migrated_percent": 83.7
+  },
+  {
+    "day": 41,
+    "migrated_percent": 84.3
+  },
+  {
+    "day": 42,
+    "migrated_percent": 84.6
+  },
+  {
+    "day": 43,
+    "migrated_percent": 85.2
+  },
+  {
+    "day": 44,
+    "migrated_percent": 85.9
+  },
+  {
+    "day": 45,
+    "migrated_percent": 86.5
+  },
+  {
+    "day": 46,
+    "migrated_percent": 86.8
+  },
+  {
+    "day": 47,
+    "migrated_percent": 87.3
+  },
+  {
+    "day": 48,
+    "migrated_percent": 87.8
+  },
+  {
+    "day": 49,
+    "migrated_percent": 88.3
+  },
+  {
+    "day": 50,
+    "migrated_percent": 88.7
+  },
+  {
+    "day": 51,
+    "migrated_percent": 89.2
+  },
+  {
+    "day": 52,
+    "migrated_percent": 89.4
+  },
+  {
+    "day": 53,
+    "migrated_percent": 89.6
+  },
+  {
+    "day": 54,
+    "migrated_percent": 90.1
+  },
+  {
+    "day": 55,
+    "migrated_percent": 90.5
+  },
+  {
+    "day": 56,
+    "migrated_percent": 91.2
+  },
+  {
+    "day": 57,
+    "migrated_percent": 91.7
+  },
+  {
+    "day": 58,
+    "migrated_percent": 91.9
+  },
+  {
+    "day": 59,
+    "migrated_percent": 92.1
+  },
+  {
+    "day": 60,
+    "migrated_percent": 92.5
+  },
+  {
+    "day": 61,
+    "migrated_percent": 92.5
+  },
+  {
+    "day": 62,
+    "migrated_percent": 92.6
+  },
+  {
+    "day": 63,
+    "migrated_percent": 92.8
+  },
+  {
+    "day": 64,
+    "migrated_percent": 93.0
+  },
+  {
+    "day": 65,
+    "migrated_percent": 93.2
+  },
+  {
+    "day": 66,
+    "migrated_percent": 93.3
+  },
+  {
+    "day": 67,
+    "migrated_percent": 93.6
+  },
+  {
+    "day": 68,
+    "migrated_percent": 93.8
+  },
+  {
+    "day": 69,
+    "migrated_percent": 94.1
+  },
+  {
+    "day": 70,
+    "migrated_percent": 94.2
+  },
+  {
+    "day": 71,
+    "migrated_percent": 94.3
+  },
+  {
+    "day": 72,
+    "migrated_percent": 94.3
+  },
+  {
+    "day": 73,
+    "migrated_percent": 94.6
+  },
+  {
+    "day": 74,
+    "migrated_percent": 94.7
+  },
+  {
+    "day": 75,
+    "migrated_percent": 95.0
+  },
+  {
+    "day": 76,
+    "migrated_percent": 95.0
+  },
+  {
+    "day": 77,
+    "migrated_percent": 95.3
+  },
+  {
+    "day": 78,
+    "migrated_percent": 95.6
+  },
+  {
+    "day": 79,
+    "migrated_percent": 95.9
+  },
+  {
+    "day": 80,
+    "migrated_percent": 96.0
+  },
+  {
+    "day": 81,
+    "migrated_percent": 96.1
+  },
+  {
+    "day": 82,
+    "migrated_percent": 96.1
+  },
+  {
+    "day": 83,
+    "migrated_percent": 96.1
+  },
+  {
+    "day": 84,
+    "migrated_percent": 96.1
+  },
+  {
+    "day": 85,
+    "migrated_percent": 96.1
+  },
+  {
+    "day": 86,
+    "migrated_percent": 96.2
+  },
+  {
+    "day": 87,
+    "migrated_percent": 96.3
+  },
+  {
+    "day": 88,
+    "migrated_percent": 96.5
+  },
+  {
+    "day": 89,
+    "migrated_percent": 96.8
+  },
+  {
+    "day": 90,
+    "migrated_percent": 96.9
+  }
+]

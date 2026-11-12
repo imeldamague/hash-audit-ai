@@ -1,0 +1,1264 @@
+{
+  "summary": {
+    "total": 25,
+    "audited": 25,
+    "matched": 25,
+    "not_matched": 0,
+    "detection_rate_percent": 100.0,
+    "evaluation": "Correspondance entre mutation attendue et détection statique",
+    "llm_enabled": false
+  },
+  "results": [
+    {
+      "file": "target_00.py",
+      "expected": "md5",
+      "detected": true,
+      "detected_schemes": [
+        "md5"
+      ],
+      "findings": [
+        {
+          "scheme": "md5",
+          "indicator": "hashlib.md5",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_00.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_01.py",
+      "expected": "sha1",
+      "detected": true,
+      "detected_schemes": [
+        "sha1"
+      ],
+      "findings": [
+        {
+          "scheme": "sha1",
+          "indicator": "hashlib.sha1",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_01.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_02.py",
+      "expected": "fast_sha256",
+      "detected": true,
+      "detected_schemes": [
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_02.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_03.py",
+      "expected": "constant_salt",
+      "detected": true,
+      "detected_schemes": [
+        "constant_salt",
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "constant_salt",
+          "indicator": "FIXED_SALT",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_03.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_04.py",
+      "expected": "timing_comparison",
+      "detected": true,
+      "detected_schemes": [
+        "timing_comparison"
+      ],
+      "findings": [
+        {
+          "scheme": "timing_comparison",
+          "indicator": "== digest",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_04.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_05.py",
+      "expected": "truncated_hash",
+      "detected": true,
+      "detected_schemes": [
+        "sha256_unsalted",
+        "truncated_hash"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "truncated_hash",
+          "indicator": "hexdigest()[:",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_05.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_06.py",
+      "expected": "bad_encoding",
+      "detected": true,
+      "detected_schemes": [
+        "bad_encoding",
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "bad_encoding",
+          "indicator": "encode('ascii')",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_06.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_07.py",
+      "expected": "argon2id",
+      "detected": true,
+      "detected_schemes": [
+        "argon2id"
+      ],
+      "findings": [
+        {
+          "scheme": "argon2id",
+          "indicator": "PasswordHasher",
+          "severity": "info"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_07.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Aucun risque élevé détecté par les règles.",
+          "model": "none"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Aucune correction proposée.",
+          "model": "none"
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_08.py",
+      "expected": "md5",
+      "detected": true,
+      "detected_schemes": [
+        "md5"
+      ],
+      "findings": [
+        {
+          "scheme": "md5",
+          "indicator": "hashlib.md5",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_08.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_09.py",
+      "expected": "sha1",
+      "detected": true,
+      "detected_schemes": [
+        "sha1"
+      ],
+      "findings": [
+        {
+          "scheme": "sha1",
+          "indicator": "hashlib.sha1",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_09.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_10.py",
+      "expected": "fast_sha256",
+      "detected": true,
+      "detected_schemes": [
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_10.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_11.py",
+      "expected": "constant_salt",
+      "detected": true,
+      "detected_schemes": [
+        "constant_salt",
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "constant_salt",
+          "indicator": "FIXED_SALT",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_11.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_12.py",
+      "expected": "timing_comparison",
+      "detected": true,
+      "detected_schemes": [
+        "timing_comparison"
+      ],
+      "findings": [
+        {
+          "scheme": "timing_comparison",
+          "indicator": "== digest",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_12.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_13.py",
+      "expected": "truncated_hash",
+      "detected": true,
+      "detected_schemes": [
+        "sha256_unsalted",
+        "truncated_hash"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "truncated_hash",
+          "indicator": "hexdigest()[:",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_13.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_14.py",
+      "expected": "bad_encoding",
+      "detected": true,
+      "detected_schemes": [
+        "bad_encoding",
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "bad_encoding",
+          "indicator": "encode('ascii')",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_14.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_15.py",
+      "expected": "argon2id",
+      "detected": true,
+      "detected_schemes": [
+        "argon2id"
+      ],
+      "findings": [
+        {
+          "scheme": "argon2id",
+          "indicator": "PasswordHasher",
+          "severity": "info"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_15.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Aucun risque élevé détecté par les règles.",
+          "model": "none"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Aucune correction proposée.",
+          "model": "none"
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_16.py",
+      "expected": "md5",
+      "detected": true,
+      "detected_schemes": [
+        "md5"
+      ],
+      "findings": [
+        {
+          "scheme": "md5",
+          "indicator": "hashlib.md5",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_16.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_17.py",
+      "expected": "sha1",
+      "detected": true,
+      "detected_schemes": [
+        "sha1"
+      ],
+      "findings": [
+        {
+          "scheme": "sha1",
+          "indicator": "hashlib.sha1",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_17.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_18.py",
+      "expected": "fast_sha256",
+      "detected": true,
+      "detected_schemes": [
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_18.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_19.py",
+      "expected": "constant_salt",
+      "detected": true,
+      "detected_schemes": [
+        "constant_salt",
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "constant_salt",
+          "indicator": "FIXED_SALT",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_19.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_20.py",
+      "expected": "timing_comparison",
+      "detected": true,
+      "detected_schemes": [
+        "timing_comparison"
+      ],
+      "findings": [
+        {
+          "scheme": "timing_comparison",
+          "indicator": "== digest",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_20.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_21.py",
+      "expected": "truncated_hash",
+      "detected": true,
+      "detected_schemes": [
+        "sha256_unsalted",
+        "truncated_hash"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "truncated_hash",
+          "indicator": "hexdigest()[:",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_21.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_22.py",
+      "expected": "bad_encoding",
+      "detected": true,
+      "detected_schemes": [
+        "bad_encoding",
+        "sha256_unsalted"
+      ],
+      "findings": [
+        {
+          "scheme": "sha256_unsalted",
+          "indicator": "hashlib.sha256",
+          "severity": "high"
+        },
+        {
+          "scheme": "bad_encoding",
+          "indicator": "encode('ascii')",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_22.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 2
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_23.py",
+      "expected": "argon2id",
+      "detected": true,
+      "detected_schemes": [
+        "argon2id"
+      ],
+      "findings": [
+        {
+          "scheme": "argon2id",
+          "indicator": "PasswordHasher",
+          "severity": "info"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_23.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Aucun risque élevé détecté par les règles.",
+          "model": "none"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Aucune correction proposée.",
+          "model": "none"
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    },
+    {
+      "file": "target_24.py",
+      "expected": "md5",
+      "detected": true,
+      "detected_schemes": [
+        "md5"
+      ],
+      "findings": [
+        {
+          "scheme": "md5",
+          "indicator": "hashlib.md5",
+          "severity": "high"
+        }
+      ],
+      "trace": [
+        {
+          "agent": "explorateur",
+          "files": [
+            "data\\mutations\\target_24.py"
+          ]
+        },
+        {
+          "agent": "identificateur",
+          "findings": 1
+        },
+        {
+          "agent": "evaluateur",
+          "assessment": "Risque identifié par analyse statique. Les fonctions de hachage rapides facilitent les attaques hors ligne.",
+          "model": "disabled_batch"
+        },
+        {
+          "agent": "correcteur",
+          "recommendation": "Privilégier Argon2id avec un sel aléatoire unique. Prévoir une migration progressive après authentification réussie ou une réinitialisation du mot de passe.",
+          "model": "disabled_batch",
+          "patch_applied": false
+        },
+        {
+          "agent": "testeur",
+          "status": "not_run",
+          "reason": "No patch applied; original target is immutable"
+        },
+        {
+          "agent": "auditeur_politique",
+          "status": "review_required",
+          "reference": "NIST SP 800-63B; ANSSI"
+        }
+      ]
+    }
+  ]
+}

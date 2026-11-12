@@ -1,0 +1,5 @@
+algorithm,hash_ms,verify_ms,repetitions,verification
+Argon2id,37.02,37.04,10,success
+scrypt,51.22,51.19,10,success
+bcrypt,240.43,243.06,10,success
+PBKDF2-SHA256,295.44,291.33,10,success

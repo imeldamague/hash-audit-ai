@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "mutation": "md5"
+  },
+  {
+    "id": 1,
+    "mutation": "sha1"
+  },
+  {
+    "id": 2,
+    "mutation": "fast_sha256"
+  },
+  {
+    "id": 3,
+    "mutation": "constant_salt"
+  },
+  {
+    "id": 4,
+    "mutation": "timing_comparison"
+  },
+  {
+    "id": 5,
+    "mutation": "truncated_hash"
+  },
+  {
+    "id": 6,
+    "mutation": "bad_encoding"
+  },
+  {
+    "id": 7,
+    "mutation": "argon2id"
+  },
+  {
+    "id": 8,
+    "mutation": "md5"
+  },
+  {
+    "id": 9,
+    "mutation": "sha1"
+  },
+  {
+    "id": 10,
+    "mutation": "fast_sha256"
+  },
+  {
+    "id": 11,
+    "mutation": "constant_salt"
+  },
+  {
+    "id": 12,
+    "mutation": "timing_comparison"
+  },
+  {
+    "id": 13,
+    "mutation": "truncated_hash"
+  },
+  {
+    "id": 14,
+    "mutation": "bad_encoding"
+  },
+  {
+    "id": 15,
+    "mutation": "argon2id"
+  },
+  {
+    "id": 16,
+    "mutation": "md5"
+  },
+  {
+    "id": 17,
+    "mutation": "sha1"
+  },
+  {
+    "id": 18,
+    "mutation": "fast_sha256"
+  },
+  {
+    "id": 19,
+    "mutation": "constant_salt"
+  },
+  {
+    "id": 20,
+    "mutation": "timing_comparison"
+  },
+  {
+    "id": 21,
+    "mutation": "truncated_hash"
+  },
+  {
+    "id": 22,
+    "mutation": "bad_encoding"
+  },
+  {
+    "id": 23,
+    "mutation": "argon2id"
+  },
+  {
+    "id": 24,
+    "mutation": "md5"
+  }
+]

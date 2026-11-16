@@ -1,53 +1,79 @@
+
 # Hash-Audit AI
 
-**Système d'intelligence artificielle multi-agents pour l'audit de sécurité des mécanismes de hachage et de stockage des mots de passe.**
+### Système multi-agents d'audit des mécanismes de hachage et de stockage des mots de passe
+
+Hash-Audit AI est un prototype pédagogique local associant cybersécurité et intelligence artificielle multi-agents.
+
+Il analyse le code source afin d'identifier les mécanismes de hachage utilisés, d'évaluer les risques associés et de proposer des recommandations de sécurisation.
+
+<p align="center">
+  <a href="https://imeldamague.github.io/hash-audit-ai/">Documentation</a> ·
+  <a href="https://github.com/imeldamague/hash-audit-ai">Dépôt GitHub</a> ·
+  <a href="https://doi.org/10.5281/zenodo.24178005">Archive Zenodo</a>
+</p>
+
+---
 
 ## Présentation
 
-Hash-Audit AI est un projet de cybersécurité et d'intelligence artificielle agentique conçu pour analyser les pratiques de stockage des mots de passe, détecter des mécanismes de hachage faibles et proposer des recommandations de sécurisation.
+Le projet repose sur une architecture composée de six agents spécialisés coordonnés par un orchestrateur.
 
-Le projet combine des mécanismes d'audit de sécurité, des expérimentations cryptographiques et une architecture multi-agents afin d'évaluer les risques associés au stockage des mots de passe.
+Chaque agent intervient dans une étape du processus d'audit : exploration, identification des mécanismes cryptographiques, évaluation des risques, recommandations, vérification et synthèse.
 
-## Fonctionnalités
+L'objectif est de proposer une approche structurée et traçable de l'analyse des mécanismes de stockage des mots de passe.
 
-- Génération d'un jeu de données synthétiques de 1 000 comptes.
-- Analyse de mécanismes de hachage : MD5, SHA-256 salé et Argon2id.
-- Architecture composée de six agents spécialisés et d'un orchestrateur.
-- Audit de 25 fichiers Python synthétiques présentant différents mécanismes ou défauts de hachage.
+## Fonctionnalités principales
+
+- Analyse statique de fichiers source Python.
+- Identification de mécanismes de hachage tels que MD5, SHA-256 avec sel et Argon2id.
+- Évaluation des risques associés aux pratiques détectées.
+- Comparaison d'Argon2id, bcrypt, scrypt et PBKDF2-SHA256.
+- Génération d'un jeu de données de 1 000 comptes synthétiques.
+- Génération et audit de 25 fichiers Python de test.
 - Simulation d'attaque par dictionnaire.
-- Comparaison d'Argon2id, scrypt, bcrypt et PBKDF2-SHA256.
-- Gestion du pepper (secret cryptographique supplémentaire).
-- Vérification facultative des mots de passe compromis avec Pwned Passwords et le mécanisme k-anonymity.
+- Gestion du pepper.
+- Vérification facultative des mots de passe compromis avec Pwned Passwords et le mécanisme de k-anonymat.
 - Simulation statistique d'une migration sur 90 jours.
-- Génération de résultats et de traces d'audit.
+- Production de rapports et de traces d'audit au format JSONL.
 
 ## Architecture multi-agents
 
-Le système repose sur six agents spécialisés coordonnés par un orchestrateur :
+Les six agents spécialisés sont coordonnés par un orchestrateur.
 
-- **Agent explorateur :** collecte et analyse les données.
-- **Agent identificateur :** identifie les mécanismes de hachage.
-- **Agent évaluateur :** évalue les risques de sécurité.
-- **Agent correcteur :** propose des recommandations de sécurisation.
-- **Agent testeur :** vérifie les résultats et les corrections.
-- **Agent auditeur :** contrôle et synthétise les résultats.
+| Agent | Responsabilité |
+|---|---|
+| Explorateur | Collecte et analyse les éléments à auditer |
+| Identificateur | Repère les mécanismes de hachage |
+| Évaluateur | Analyse les risques associés |
+| Correcteur | Propose des recommandations |
+| Testeur | Vérifie les résultats produits |
+| Auditeur | Contrôle et synthétise l'audit |
+
+Les agents partagent un état de travail permettant de coordonner les différentes étapes du traitement.
+
+Consulter le [schéma détaillé de l'architecture](https://imeldamague.github.io/hash-audit-ai/architecture/).
 
 ## Technologies utilisées
 
-- **Langage :** Python 3.11 ou supérieur.
-- **Intelligence artificielle :** architecture multi-agents.
-- **Cryptographie :** Argon2id, scrypt, bcrypt et PBKDF2-SHA256.
-- **Sécurité :** analyse des mécanismes de stockage, pepper et Pwned Passwords.
-- **Tests :** pytest et pytest-cov.
-- **Gestion des versions :** Git et GitHub.
-- **Intégration continue :** GitHub Actions.
+| Technologie | Utilisation |
+|---|---|
+| Python 3.11+ | Développement du système |
+| Argon2id | Référence de stockage sécurisé |
+| bcrypt, scrypt, PBKDF2-SHA256 | Comparaison des mécanismes de dérivation |
+| Ollama | Exécution facultative de modèles locaux |
+| Pytest | Tests automatisés |
+| pytest-cov | Mesure de la couverture |
+| GitHub Actions | Intégration continue |
+| MkDocs Material | Documentation technique |
 
 ## Installation
 
 ### Prérequis
 
-- Python 3.11 ou supérieur.
-- Git.
+- Python 3.11 ou supérieur
+- Git
+- PowerShell sous Windows ou un terminal sous Linux
 
 ### 1. Cloner le dépôt
 
@@ -67,10 +93,10 @@ python -m venv .venv
 Sous Windows PowerShell :
 
 ```powershell
-.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 ```
 
-Sous Linux ou macOS :
+Sous Linux :
 
 ```bash
 source .venv/bin/activate
@@ -79,141 +105,113 @@ source .venv/bin/activate
 ### 4. Installer les dépendances
 
 ```bash
-python -m pip install -e ".[dev]"
+python -m pip install --upgrade pip
+pip install -e ".[dev]"
 ```
-
-## Configuration
-
-Un fichier `.env.example` est fourni comme modèle de configuration.
-
-Pour créer un fichier local :
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Renseigner les variables nécessaires dans le fichier `.env`.
-
-**Important :** ne jamais publier de secrets, de clés ou de valeurs sensibles dans le dépôt GitHub.
 
 ## Utilisation
 
-Après l'installation, les fonctionnalités sont accessibles depuis le terminal avec la commande `hash-audit`.
-
-### Afficher les commandes disponibles
-
-```powershell
-hash-audit --help
-```
-
-### 1. Auditer un fichier Python
-
-```powershell
-hash-audit audit chemin/vers/fichier.py
-```
-
-Les résultats comprennent les détections et les traces d'exécution. La trace est également enregistrée dans `traces/latest.jsonl`.
-
-### 2. Générer les fichiers de test
-
-```powershell
-hash-audit mutations
-```
-
-Les fichiers Python synthétiques et le fichier `ground_truth.json` sont générés dans `data/mutations`.
-
-### 3. Auditer les fichiers de test
-
-```powershell
-hash-audit audit-batch
-```
-
-Le rapport est enregistré dans `results/mutation_audit.json`.
-
-Pour personnaliser les chemins :
-
-```powershell
-hash-audit audit-batch --input data/mutations --out results/mon_rapport.json
-```
-
-### 4. Générer un jeu de données de comptes
-
-```powershell
-hash-audit dataset
-```
-
-Le résultat est enregistré dans `results/accounts.json`.
-
-### 5. Simuler une migration
-
-```powershell
-hash-audit migration
-```
-
-Le résultat est enregistré dans `results/migration.json`.
-
-Les chemins de sortie peuvent être personnalisés avec l'option `--out`.
-
-## Tests
-
-### Exécuter les tests
+### Analyser un fichier source
 
 ```bash
-python -m pytest -q
+python -m hash_audit.cli audit app/demo.py
 ```
 
-### Mesurer la couverture de code
+### Générer les fichiers de test
 
 ```bash
-python -m pytest --cov=src/hash_audit --cov=app --cov-report=term-missing
+python -m hash_audit.cli mutations --out data/mutations
+```
+
+### Réaliser un audit en lot
+
+```bash
+python -m hash_audit.cli audit-batch --input data/mutations --out results/mutation_audit.json
+```
+
+### Générer un jeu de données synthétiques
+
+```bash
+python -m hash_audit.cli dataset --out results/accounts.json
+```
+
+### Simuler une migration
+
+```bash
+python -m hash_audit.cli migration --out results/migration.json
 ```
 
 ## Résultats de validation
 
-Derniers résultats locaux mesurés le 12 novembre 2026 :
+Résultats de référence mesurés le 12 novembre 2026 :
 
-- **66 tests réussis.**
-- **87 % de couverture de code.**
-- Intégration continue vérifiée avec GitHub Actions.
-- Audit de 25 fichiers Python synthétiques avec une détection de 100 % sur les cas de test contrôlés.
+| Indicateur | Résultat |
+|---|---:|
+| Tests automatisés réussis | 66 |
+| Couverture de code | 87 % |
+| Comptes synthétiques | 1 000 |
+| Fichiers Python de test | 25 |
+| Correspondances correctes sur les cas contrôlés | 25/25 |
+| Simulation statistique | 90 jours |
 
-Le taux de détection correspond aux mutations synthétiques évaluées et ne constitue pas une garantie de performance dans un environnement de production.
+Les résultats de détection concernent exclusivement les fichiers synthétiques contrôlés du jeu de validation. Ils ne constituent pas une mesure de précision généralisable à des applications réelles.
 
-## Sécurité et limites
+### Exécuter les tests
 
-- Les données utilisées sont synthétiques.
-- Les résultats obtenus sur les 25 fichiers de test ne garantissent pas une détection parfaite en environnement de production.
-- Les performances des algorithmes dépendent du matériel utilisé.
-- La simulation de migration sur 90 jours est statistique et ne représente pas une migration réelle.
-- La vérification des mots de passe compromis est facultative.
-- Une validation humaine reste nécessaire avant toute utilisation en production.
+```bash
+python -m pytest
+```
 
-Ce projet constitue un outil expérimental et pédagogique. Il ne remplace pas un audit de sécurité réalisé dans un environnement réel.
+### Mesurer la couverture
+
+```bash
+python -m pytest --cov=src/hash_audit --cov-report=term-missing
+```
 
 ## Documentation
 
-Les documents complémentaires sont disponibles à la racine du dépôt :
+La documentation complète est disponible sur GitHub Pages :
 
-- [AUDIT.md](AUDIT.md) : méthodologie et résultats de l'audit.
-- [SYSTEM_CARD.md](SYSTEM_CARD.md) : présentation et fonctionnement du système.
-- [AI_USAGE.md](AI_USAGE.md) : documentation de l'utilisation de l'intelligence artificielle.
+**[Consulter la documentation de Hash-Audit AI](https://imeldamague.github.io/hash-audit-ai/)**
 
-## Licence
+| Rubrique | Description |
+|---|---|
+| Architecture | Organisation des agents et orchestration |
+| Fonctionnement | Déroulement des audits |
+| Résultats | Tests et expérimentations |
+| Installation | Installation et utilisation |
+| Sécurité et limites | Périmètre et précautions |
 
-Ce projet est distribué sous licence MIT.
+## Sécurité et limites
 
-Consultez le fichier [LICENSE](LICENSE).
+Hash-Audit AI est un prototype pédagogique local. Il ne constitue ni une certification de sécurité ni un remplacement d'un audit professionnel.
 
-## Version
+Quelques précautions importantes :
 
-**Version actuelle : v1.0.0**
+- Les démonstrations utilisent des données synthétiques.
+- Les fichiers analysés ne doivent pas être exécutés simplement parce qu'ils sont soumis à l'audit.
+- L'analyse statique peut produire des faux positifs et des faux négatifs.
+- L'intégration d'Ollama est facultative et ses réponses nécessitent une vérification.
+- La vérification Pwned Passwords est facultative et désactivée par défaut dans la démonstration.
+- Les recommandations et correctifs doivent être validés par une personne compétente avant toute utilisation.
+- La simulation de migration ne modifie aucun compte réel.
 
-[Consulter la dernière version](https://github.com/imeldamague/hash-audit-ai/releases/latest)
+## Publication et archivage
+
+| Information | Valeur |
+|---|---|
+| Version | v1.0.1 |
+| Licence | MIT |
+| DOI | [10.5281/zenodo.24178005](https://doi.org/10.5281/zenodo.24178005) |
+| Dépôt | [GitHub – Hash-Audit AI](https://github.com/imeldamague/hash-audit-ai) |
 
 ## Auteur
 
-**Imelda Magué**
+Projet développé par **Imelda Magué**.
 
-GitHub : [@imeldamague](https://github.com/imeldamague)
+- GitHub : [@imeldamague](https://github.com/imeldamague)
+- Documentation : [Hash-Audit AI](https://imeldamague.github.io/hash-audit-ai/)
 
-Dépôt du projet : [Hash-Audit AI](https://github.com/imeldamague/hash-audit-ai)
+---
+
+*Projet réalisé autour de la cybersécurité, de l'analyse des mécanismes de hachage et de l'intelligence artificielle multi-agents.*

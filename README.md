@@ -1,23 +1,19 @@
 
-# Hash-Audit AI
+# 🔐 Hash-Audit AI – IA d'audit de hachage
 
 ### Système multi-agents d'audit des mécanismes de hachage et de stockage des mots de passe
 
-Hash-Audit AI est un prototype pédagogique local associant cybersécurité et intelligence artificielle multi-agents.
+Hash-Audit AI est un prototype pédagogique local associant **cybersécurité et intelligence artificielle multi-agents**.
 
-Il analyse le code source afin d'identifier les mécanismes de hachage utilisés, d'évaluer les risques associés et de proposer des recommandations de sécurisation.
+Il analyse statiquement le code source afin d'identifier les mécanismes de hachage utilisés, d'évaluer les risques associés et de proposer des recommandations de sécurisation.
 
-<p align="center">
-  <a href="https://imeldamague.github.io/hash-audit-ai/">Documentation</a> ·
-  <a href="https://github.com/imeldamague/hash-audit-ai">Dépôt GitHub</a> ·
-  <a href="https://doi.org/10.5281/zenodo.24178005">Archive Zenodo</a>
-</p>
+**[Documentation](https://imeldamague.github.io/hash-audit-ai/)** · [Dépôt GitHub](https://github.com/imeldamague/hash-audit-ai) · [Archive Zenodo](https://doi.org/10.5281/zenodo.24178005)
 
 ---
 
 ## Présentation
 
-Le projet repose sur une architecture composée de six agents spécialisés coordonnés par un orchestrateur.
+Le projet repose sur une architecture composée de **six agents spécialisés**, coordonnés par un orchestrateur.
 
 Chaque agent intervient dans une étape du processus d'audit : exploration, identification des mécanismes cryptographiques, évaluation des risques, recommandations, vérification et synthèse.
 
@@ -29,10 +25,10 @@ L'objectif est de proposer une approche structurée et traçable de l'analyse de
 - Identification de mécanismes de hachage tels que MD5, SHA-256 avec sel et Argon2id.
 - Évaluation des risques associés aux pratiques détectées.
 - Comparaison d'Argon2id, bcrypt, scrypt et PBKDF2-SHA256.
-- Génération d'un jeu de données de 1 000 comptes synthétiques.
-- Génération et audit de 25 fichiers Python de test.
+- Génération d'un jeu de données de **1 000 comptes synthétiques**.
+- Génération et audit de **25 fichiers Python de test**.
 - Simulation d'attaque par dictionnaire.
-- Gestion du pepper.
+- Gestion du *pepper* (secret supplémentaire).
 - Vérification facultative des mots de passe compromis avec Pwned Passwords et le mécanisme de k-anonymat.
 - Simulation statistique d'une migration sur 90 jours.
 - Production de rapports et de traces d'audit au format JSONL.
@@ -43,12 +39,12 @@ Les six agents spécialisés sont coordonnés par un orchestrateur.
 
 | Agent | Responsabilité |
 |---|---|
-| Explorateur | Collecte et analyse les éléments à auditer |
-| Identificateur | Repère les mécanismes de hachage |
-| Évaluateur | Analyse les risques associés |
-| Correcteur | Propose des recommandations |
-| Testeur | Vérifie les résultats produits |
-| Auditeur | Contrôle et synthétise l'audit |
+| Explorateur | Recueillir et analyser les éléments à auditer |
+| Identificateur | Repérer les mécanismes de hachage |
+| Évaluateur | Analyser les risques associés |
+| Correcteur | Proposer des recommandations de sécurisation |
+| Testeur | Vérifier les résultats produits |
+| Auditeur | Contrôler et synthétiser l'audit |
 
 Les agents partagent un état de travail permettant de coordonner les différentes étapes du traitement.
 
@@ -63,9 +59,9 @@ Consulter le [schéma détaillé de l'architecture](https://imeldamague.github.i
 | bcrypt, scrypt, PBKDF2-SHA256 | Comparaison des mécanismes de dérivation |
 | Ollama | Exécution facultative de modèles locaux |
 | Pytest | Tests automatisés |
-| pytest-cov | Mesure de la couverture |
+| pytest-cov | Mesure de la couverture de code |
 | GitHub Actions | Intégration continue |
-| MkDocs Material | Documentation technique |
+| Material for MkDocs | Documentation technique |
 
 ## Installation
 
@@ -143,7 +139,7 @@ python -m hash_audit.cli migration --out results/migration.json
 
 ## Résultats de validation
 
-Résultats de référence mesurés le 12 novembre 2026 :
+Résultats de référence mesurés le **12 novembre 2026** :
 
 | Indicateur | Résultat |
 |---|---:|
@@ -151,10 +147,10 @@ Résultats de référence mesurés le 12 novembre 2026 :
 | Couverture de code | 87 % |
 | Comptes synthétiques | 1 000 |
 | Fichiers Python de test | 25 |
-| Correspondances correctes sur les cas contrôlés | 25/25 |
+| Correspondances attendues sur les cas contrôlés | 25/25 |
 | Simulation statistique | 90 jours |
 
-Les résultats de détection concernent exclusivement les fichiers synthétiques contrôlés du jeu de validation. Ils ne constituent pas une mesure de précision généralisable à des applications réelles.
+Les résultats de détection concernent exclusivement les fichiers synthétiques contrôlés du jeu de validation. Ils ne constituent pas une mesure de précision généralisable aux applications réelles.
 
 ### Exécuter les tests
 
@@ -170,7 +166,7 @@ python -m pytest --cov=src/hash_audit --cov-report=term-missing
 
 ## Documentation
 
-La documentation complète est disponible sur GitHub Pages :
+La documentation technique complète est disponible sur GitHub Pages :
 
 **[Consulter la documentation de Hash-Audit AI](https://imeldamague.github.io/hash-audit-ai/)**
 
@@ -184,7 +180,7 @@ La documentation complète est disponible sur GitHub Pages :
 
 ## Sécurité et limites
 
-Hash-Audit AI est un prototype pédagogique local. Il ne constitue ni une certification de sécurité ni un remplacement d'un audit professionnel.
+Hash-Audit AI est un **prototype pédagogique local**. Il ne constitue ni une certification de sécurité ni un remplacement d'un audit professionnel.
 
 Quelques précautions importantes :
 
@@ -192,7 +188,7 @@ Quelques précautions importantes :
 - Les fichiers analysés ne doivent pas être exécutés simplement parce qu'ils sont soumis à l'audit.
 - L'analyse statique peut produire des faux positifs et des faux négatifs.
 - L'intégration d'Ollama est facultative et ses réponses nécessitent une vérification.
-- La vérification Pwned Passwords est facultative et désactivée par défaut dans la démonstration.
+- La vérification avec Pwned Passwords est facultative et désactivée par défaut dans la démonstration.
 - Les recommandations et correctifs doivent être validés par une personne compétente avant toute utilisation.
 - La simulation de migration ne modifie aucun compte réel.
 
@@ -207,11 +203,13 @@ Quelques précautions importantes :
 
 ## Auteur
 
-Projet développé par **Imelda Magué**.
+**Projet développé par Imelda Magué.**
 
 - GitHub : [@imeldamague](https://github.com/imeldamague)
 - Documentation : [Hash-Audit AI](https://imeldamague.github.io/hash-audit-ai/)
 
+Projet réalisé autour de la cybersécurité, de l'analyse des mécanismes de hachage et de l'intelligence artificielle multi-agents.
+
 ---
 
-*Projet réalisé autour de la cybersécurité, de l'analyse des mécanismes de hachage et de l'intelligence artificielle multi-agents.*
+*Hash-Audit AI – Prototype pédagogique de recherche et d'expérimentation en cybersécurité.*

@@ -3,7 +3,7 @@
 
 ### Système multi-agents d'audit des mécanismes de hachage et de stockage des mots de passe
 
-Hash-Audit AI est un prototype pédagogique local associant cybersécurité et intelligence artificielle multi-agents.
+Hash-Audit AI est un prototype pédagogique local associant **cybersécurité et intelligence artificielle multi-agents**.
 
 Il analyse statiquement le code source afin d'identifier les mécanismes de hachage utilisés, d'évaluer les risques associés et de proposer des recommandations de sécurisation.
 
@@ -13,19 +13,19 @@ Il analyse statiquement le code source afin d'identifier les mécanismes de hach
 
 ## Présentation
 
-Le projet repose sur une architecture composée de six agents spécialisés, coordonnés par un orchestrateur.
+Hash-Audit AI repose sur une architecture composée de six agents spécialisés, coordonnés par un orchestrateur.
 
-Chaque agent intervient dans une étape du processus d'audit : exploration, identification des mécanismes cryptographiques, évaluation des risques, recommandations, vérification et synthèse.
+Chaque agent intervient dans une étape du processus d'audit : exploration du code, identification des mécanismes cryptographiques, évaluation des risques, recommandations, vérification et synthèse.
 
 L'objectif est de proposer une approche structurée et traçable de l'analyse des mécanismes de stockage des mots de passe.
 
-## Fonctionnalités
+## Fonctionnalités principales
 
 - Analyse statique de fichiers source Python.
 - Identification de mécanismes de hachage tels que MD5, SHA-256 avec sel et Argon2id.
 - Évaluation des risques associés aux pratiques détectées.
 - Comparaison d'Argon2id, bcrypt, scrypt et PBKDF2-SHA256.
-- Génération de 1 000 comptes synthétiques.
+- Génération d'un jeu de données de 1 000 comptes synthétiques.
 - Génération et audit de 25 fichiers Python de test.
 - Simulation d'attaque par dictionnaire.
 - Gestion du *pepper* (secret supplémentaire).
@@ -46,7 +46,7 @@ Les six agents spécialisés sont coordonnés par un orchestrateur.
 | Testeur | Vérifier les résultats produits |
 | Auditeur | Contrôler et synthétiser l'audit |
 
-Les agents partagent un état de travail permettant de coordonner les différentes étapes du traitement.
+Les agents partagent un état de travail qui permet de coordonner les différentes étapes du traitement.
 
 [Consulter le schéma détaillé de l'architecture](https://imeldamague.github.io/hash-audit-ai/architecture/).
 
@@ -54,7 +54,7 @@ Les agents partagent un état de travail permettant de coordonner les différent
 
 | Technologie | Utilisation |
 |---|---|
-| Python 3.11+ | Développement |
+| Python 3.11+ | Développement du système |
 | Argon2id | Référence de stockage sécurisé |
 | bcrypt, scrypt, PBKDF2-SHA256 | Comparaison des mécanismes de dérivation |
 | Ollama | Exécution facultative de modèles locaux |
@@ -182,7 +182,7 @@ La documentation technique complète est disponible sur GitHub Pages.
 
 Hash-Audit AI est un prototype pédagogique local. Il ne constitue ni une certification de sécurité ni un remplacement d'un audit professionnel.
 
-Précautions d'utilisation :
+Les précautions suivantes doivent être prises en compte :
 
 - Les démonstrations utilisent des données synthétiques.
 - Les fichiers analysés ne doivent pas être exécutés simplement parce qu'ils sont soumis à l'audit.

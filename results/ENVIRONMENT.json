@@ -1,0 +1,20 @@
+{
+  "python_version": "3.13.14",
+  "operating_system": "Windows",
+  "os_release": "11",
+  "architecture": "AMD64",
+  "logical_cpu_count": 12,
+  "packages": {
+    "argon2-cffi": "25.1.0",
+    "bcrypt": "5.0.0",
+    "cryptography": null,
+    "pytest": "9.2.0",
+    "pytest-cov": "7.1.0",
+    "pydantic": null,
+    "typer": null,
+    "ollama": null
+  },
+  "reproduction_command": "make reproduce",
+  "verification_scope": "Executed successfully in the existing local environment; fresh-clone reproduction not yet verified",
+  "model_digests": "Not recorded"
+}

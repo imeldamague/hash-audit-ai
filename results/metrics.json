@@ -1,0 +1,76 @@
+{
+  "accounts": {
+    "total": 1000,
+    "by_scheme": {
+      "md5": 334,
+      "sha256_salted": 333,
+      "argon2id": 333
+    }
+  },
+  "mutations": {
+    "summary": {
+      "total": 25,
+      "audited": 25,
+      "matched": 25,
+      "not_matched": 0,
+      "detection_rate_percent": 100.0,
+      "evaluation": "Correspondance entre mutation attendue et détection statique",
+      "llm_enabled": false
+    },
+    "results_count": 25
+  },
+  "hash_benchmark": [
+    {
+      "algorithm": "Argon2id",
+      "hash_ms": "27.98",
+      "verify_ms": "27.6",
+      "repetitions": "10",
+      "verification": "success"
+    },
+    {
+      "algorithm": "scrypt",
+      "hash_ms": "54.67",
+      "verify_ms": "54.55",
+      "repetitions": "10",
+      "verification": "success"
+    },
+    {
+      "algorithm": "bcrypt",
+      "hash_ms": "253.63",
+      "verify_ms": "254.11",
+      "repetitions": "10",
+      "verification": "success"
+    },
+    {
+      "algorithm": "PBKDF2-SHA256",
+      "hash_ms": "295.38",
+      "verify_ms": "298.84",
+      "repetitions": "10",
+      "verification": "success"
+    }
+  ],
+  "migration": {
+    "observations": 91,
+    "first": {
+      "day": 0,
+      "migrated_percent": 33.3
+    },
+    "last": {
+      "day": 90,
+      "migrated_percent": 96.9
+    }
+  },
+  "model_benchmark": {
+    "total": 2,
+    "by_status": {
+      "success": 1,
+      "truncated": 1
+    }
+  },
+  "model_comparison": {
+    "total": 2,
+    "by_status": {
+      "success": 2
+    }
+  }
+}
